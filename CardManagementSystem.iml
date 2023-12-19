@@ -21,6 +21,7 @@
       <configuration>
         <fileset id="fileset" name="Spring 应用程序上下文" removed="false">
           <file>file://$MODULE_DIR$/src/main/resources/springmvc-servlet.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/mapper-config.xml</file>
         </fileset>
       </configuration>
     </facet>
