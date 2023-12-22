@@ -20,7 +20,7 @@
             DivMessage.style.display='block'
         }
     </script>
-<link rel="stylesheet" type="text/css" href="css/Login.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/css/Login.css">
 </head>
 <body>
 
