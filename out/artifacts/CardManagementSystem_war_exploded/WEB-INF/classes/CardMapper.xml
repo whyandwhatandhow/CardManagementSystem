@@ -6,4 +6,30 @@
 <mapper namespace="com.digital.dao.CardMapper">
 
 
+    <insert id="addCard" parameterType="com.digital.entity.Card">
+        insert into cardinfo.card (name,phone_num,e_mail,workplace,title,address,username)
+        values (#{name},#{phone_num},#{e_mail},#{workplace},#{title},#{address},#{username})
+    </insert>
+    <delete id="DeleteCard" parameterType="com.digital.entity.Card">
+        delete from cardinfo.card where card_id = #{card_id}
+    </delete>
+
+    <update id="UpdateCard" parameterType="com.digital.entity.Card">
+        update cardinfo.card
+        set name = #{name},
+        phone_num = #{phone_num},
+        e_mail = #{e_mail},
+        workplace = #{workplace},
+        title = #{title},
+        address = #{address},
+        username = #{username}
+        where card_id = #{card_id}
+    </update>
+
+    <select id="list" resultType="com.digital.entity.Card">
+        select * from cardinfo.card
+    </select>
+    <select id="findCardById" resultType="com.digital.entity.Card">
+        select * from cardinfo.card where card_id=#{card_id}
+    </select>
 </mapper>

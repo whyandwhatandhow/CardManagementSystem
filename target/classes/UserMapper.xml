@@ -5,13 +5,13 @@
 
 <mapper namespace="com.digital.dao.UserMapper">
 
-    <insert id="addUser">
+    <insert id="addUser" parameterType="User">
         insert into cardinfo.user (username,password) values (#{username},#{password})
     </insert>
-    <update id="updateUser">
+    <update id="updateUser" parameterType="User">
         update cardinfo.user set password=#{password} where username=#{username}
     </update>
-    <select id="selectUserByUsername">
+    <select id="selectUserByUsername" resultType="com.digital.entity.User">
         select * from cardinfo.user  where username=#{username}
     </select>
 </mapper>

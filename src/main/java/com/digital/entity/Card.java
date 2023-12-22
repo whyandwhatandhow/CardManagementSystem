@@ -3,7 +3,7 @@ package com.digital.entity;
 public class Card {
     private int card_id;
     private String name;
-    private int phone_num;
+    private long phone_num;
     private String e_mail;
     private String workplace;
     private String title;
@@ -26,11 +26,11 @@ public class Card {
         this.name = name;
     }
 
-    public int getPhone_num() {
+    public long getPhone_num() {
         return phone_num;
     }
 
-    public void setPhone_num(int phone_num) {
+    public void setPhone_num(long phone_num) {
         this.phone_num = phone_num;
     }
 
@@ -74,7 +74,7 @@ public class Card {
         this.username = username;
     }
 
-    public Card(int card_id, String name, int phone_num, String e_mail, String workplace, String title, String address, String username) {
+    public Card(int card_id, String name, long phone_num, String e_mail, String workplace, String title, String address, String username) {
         this.card_id = card_id;
         this.name = name;
         this.phone_num = phone_num;
