@@ -21,21 +21,21 @@
 
 <body>
 <div class="welcome-container">
-  <h2>欢迎‘${param.username}’来到名片管理系统</h2>
+  <h2>欢迎${param.username}${back}来到名片管理系统</h2>
 </div>
 
 <div class="options-container">
   <div class="dropdown">
     <button class="button">名片管理</button>
     <div class="dropdown-content">
-      <a href="#" class="button">添加名片</a>
+      <a href="${pageContext.request.contextPath}/card/toAddCard" class="button">添加名片</a>
       <a href="#" class="button">删除名片</a>
       <a href="#" class="button">修改名片</a>
       <a href="#" class="button">查询名片</a>
     </div>
   </div>
   <a href="#" class="button">个人中心</a>
-  <a href="#" class="button">安全退出</a>
+  <a href="${pageContext.request.contextPath}/jsp/Login.jsp" class="button">安全退出</a>
 </div>
 
 <table class="table-hover">
@@ -50,6 +50,7 @@
   <tbody>
   <% for (Card card : (List<Card>) request.getAttribute("cards")) { %>
   <tr>
+    <td><input type="checkbox" name="cardId" value="<%=card.getCard_id()%>"></td>
     <td><%=card.getCard_id()%></td>
     <td><%=card.getName()%></td>
     <td><%=card.getWorkplace()%></td>

@@ -11,7 +11,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>名片管理系统</title>
-  <link rel="stylesheet" type="text/css" href="css/register.css">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/css/register.css">
   <script>
     function showMassage(message){
       var errorDiv = document.getElementById('error-message');
@@ -65,12 +65,15 @@
     <div id="error-message" style="color: red; display: none;"></div>
     <button type="submit" class="login-btn">确认</button>
   </form>
-  <button onclick="location.href='/jsp/index.jsp'" class="register-btn">返回</button>
+  <button onclick="location.href='${pageContext.request.contextPath}/card/list'" class="register-btn">返回</button>
 </div>
 <script>
   var error1 = '${message1}';
+  var error2='${message2}';
   if (error1) {
     showMassage(error1);
+  }else if(error2){
+    showMassage(error2);
   }
 </script>
 </body>

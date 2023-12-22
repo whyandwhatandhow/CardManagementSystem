@@ -34,7 +34,6 @@ public class UserController {
 
             // 使用 RedirectAttributes 传递参数到重定向页面
             redirectAttributes.addAttribute("username", username);
-
             // 重定向到index.jsp页面
             return "redirect:/card/list";
         } else {

@@ -11,4 +11,5 @@ public interface CardService {
     void DeleteCard(int id);
     Card findCardById(int id);
     void UpdateCard(Card card);
+    Card findCardByUsername(String username);
 }

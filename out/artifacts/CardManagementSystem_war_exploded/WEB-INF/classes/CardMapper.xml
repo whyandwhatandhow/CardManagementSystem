@@ -32,4 +32,7 @@
     <select id="findCardById" resultType="com.digital.entity.Card">
         select * from cardinfo.card where card_id=#{card_id}
     </select>
+    <select id="findCardByUsername" resultType="com.digital.entity.Card">
+        select * from cardinfo.card where username=#{username}
+    </select>
 </mapper>

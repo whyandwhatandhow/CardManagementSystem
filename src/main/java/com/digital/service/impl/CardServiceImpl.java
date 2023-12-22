@@ -41,5 +41,10 @@ public class CardServiceImpl implements CardService {
         cardMapper.UpdateCard(card);
     }
 
+    @Override
+    public Card findCardByUsername(String username) {
+        return cardMapper.findCardByUsername(username);
+    }
+
 
 }

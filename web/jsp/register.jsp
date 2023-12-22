@@ -11,7 +11,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>名片管理系统</title>
-<link rel="stylesheet" type="text/css" href="css/register.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/css/register.css">
     <script>
         function showMassage(message){
             var errorDiv = document.getElementById('error-message');

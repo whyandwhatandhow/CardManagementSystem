@@ -10,6 +10,7 @@ public interface CardMapper {
     List<Card> list();
     void DeleteCard(@Param("card_id") int id);
     Card findCardById(@Param("card_id") int id);
+    Card findCardByUsername(@Param("username") String username);
     void UpdateCard(Card card);
 
 }

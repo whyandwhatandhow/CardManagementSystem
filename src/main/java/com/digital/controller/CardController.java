@@ -29,11 +29,10 @@ public class CardController {
 
     //展示主页面
     @RequestMapping("/list")
-    public String list(@RequestParam("username") String user, Model model, HttpSession session){
+    public String list(@RequestParam(value = "username",defaultValue = "defaultUsername") String user, Model model, HttpSession session){
         session.getAttribute("user");
         model.addAttribute("user",user);
         List<Card> cards=cardService.list();
-        System.out.println(cards);
         model.addAttribute("cards",cards);
         return "index";
     }
@@ -48,11 +47,27 @@ public class CardController {
     }
 
     @RequestMapping("/addCard")
-    public String addCard(HttpSession session,Model model,Card card){
-        User user=(User) session.getAttribute("user");
-        model.addAttribute("user",user);
-        cardService.addCard(card);
-        return "redirect:/card/list";
+    public String addCard(HttpSession session, Model model, Card card) {
+        User user = (User) session.getAttribute("user");
+        model.addAttribute("user", user);
+        Card newCard = cardService.findCardByUsername(card.getUsername());
+        User allUser = userService.selectUserByUsername(card.getUsername());
+
+        if (allUser == null) {
+            model.addAttribute("message1", "没有此用户，请重新填写信息");
+            System.out.println("1");
+            return "addCard";
+        }
+
+        if (newCard == null) {
+            cardService.addCard(card);
+            System.out.println(2);
+            return "redirect:/card/list";
+        } else {
+            model.addAttribute("message2", "用户名片已经注册");
+            System.out.println(3);
+            return "addCard";
+        }
     }
 
 
