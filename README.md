@@ -47,4 +47,43 @@ public String list(@RequestParam(value = "username", defaultValue = "defaultUser
 }
 ```
 
+错误4
+后端的参数名字id应该和前端?id一致
+```
+<a href="${pageContext.request.contextPath}/card/deleteCard?id=<%=card.getCard_id()%>">删除</a>
+```
+
+错误5：
+查询时，不可以long和String的一起，不然会混淆识别（错误演示）：
+```
+ List<Card> searchResults =cardService.findCardLikeUsername(query);
+        searchResults.addAll(cardService.findCardLikePhone(Long.valueOf(query)));  //这里不可以和String一起
+        searchResults.addAll(cardService.findCardLikeName(query));
+        searchResults.addAll(cardService.findCardLikeE_mail(query));
+        searchResults.addAll(cardService.findCardLikeTitle(query));
+        searchResults.addAll(cardService.findCardLikeWorkplace(query));
+        searchResults.addAll(cardService.findCardLikeAddress(query));
+```
+正确：
+```
+        List<Card> searchResults =new ArrayList<>();
+        int flag=0;
+        try{
+            searchResults.addAll(cardService.findCardLikePhone(Long.valueOf(query)));
+            searchResults.addAll(cardService.findCardLikeUsername(query));
+        }catch (NumberFormatException e){
+            flag=1;
+        }
+        // 根据用户名查询名片
+        if(flag==1){
+            searchResults.addAll(cardService.findCardLikeUsername(query));
+            searchResults.addAll(cardService.findCardLikeName(query));
+            searchResults.addAll(cardService.findCardLikeE_mail(query));
+            searchResults.addAll(cardService.findCardLikeTitle(query));
+            searchResults.addAll(cardService.findCardLikeWorkplace(query));
+            searchResults.addAll(cardService.findCardLikeAddress(query));
+        }
+
+```
+
 

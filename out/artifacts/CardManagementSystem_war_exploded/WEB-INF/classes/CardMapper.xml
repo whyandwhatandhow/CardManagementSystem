@@ -35,4 +35,25 @@
     <select id="findCardByUsername" resultType="com.digital.entity.Card">
         select * from cardinfo.card where username=#{username}
     </select>
+    <select id="findCardLikeUsername" resultType="com.digital.entity.Card">
+        SELECT * FROM cardinfo.card WHERE username LIKE CONCAT('%', #{username}, '%');
+    </select>
+    <select id="findCardLikePhone" resultType="com.digital.entity.Card">
+        SELECT * FROM cardinfo.card WHERE phone_num LIKE CONCAT('%', #{phone_num}, '%');
+    </select>
+    <select id="findCardLikeE_mail" resultType="com.digital.entity.Card">
+        SELECT * FROM cardinfo.card WHERE e_mail LIKE CONCAT('%', #{e_mail}, '%');
+    </select>
+    <select id="findCardLikeWorkplace" resultType="com.digital.entity.Card">
+        SELECT * FROM cardinfo.card WHERE workplace LIKE CONCAT('%', #{workplace}, '%');
+    </select>
+    <select id="findCardLikeTitle" resultType="com.digital.entity.Card">
+        SELECT * FROM cardinfo.card WHERE title LIKE CONCAT('%', #{title}, '%');
+    </select>
+    <select id="findCardLikeAddress" resultType="com.digital.entity.Card">
+        SELECT * FROM cardinfo.card WHERE address LIKE CONCAT('%', #{address}, '%');
+    </select>
+    <select id="findCardLikeName" resultType="com.digital.entity.Card">
+        SELECT * FROM cardinfo.card WHERE name LIKE CONCAT('%', #{name}, '%');
+    </select>
 </mapper>

@@ -9,9 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -55,20 +58,62 @@ public class CardController {
 
         if (allUser == null) {
             model.addAttribute("message1", "没有此用户，请重新填写信息");
-            System.out.println("1");
             return "addCard";
         }
 
         if (newCard == null) {
             cardService.addCard(card);
-            System.out.println(2);
             return "redirect:/card/list";
         } else {
             model.addAttribute("message2", "用户名片已经注册");
-            System.out.println(3);
             return "addCard";
         }
     }
 
+
+    @RequestMapping("/deleteCard")
+    public String deleteCard(int id){
+        cardService.DeleteCard(id);
+        return "redirect:/card/list";
+    }
+
+
+    @RequestMapping("/toQuery")
+    public String toQuery(HttpSession session, Model model) {
+        User user = (User) session.getAttribute("user");
+        model.addAttribute("user", user);
+        return "query";
+    }
+
+    @RequestMapping("/queryCard")
+    public String queryByUsername(HttpSession session, Model model, @RequestParam String query) {
+        User user = (User) session.getAttribute("user");
+        model.addAttribute("user", user);
+        List<Card> searchResults =new ArrayList<>();
+        int flag=0;
+        try{
+            searchResults.addAll(cardService.findCardLikePhone(Long.valueOf(query)));
+            searchResults.addAll(cardService.findCardLikeUsername(query));
+        }catch (NumberFormatException e){
+            flag=1;
+        }
+        // 根据用户名查询名片
+        if(flag==1){
+            searchResults.addAll(cardService.findCardLikeUsername(query));
+            searchResults.addAll(cardService.findCardLikeName(query));
+            searchResults.addAll(cardService.findCardLikeE_mail(query));
+            searchResults.addAll(cardService.findCardLikeTitle(query));
+            searchResults.addAll(cardService.findCardLikeWorkplace(query));
+            searchResults.addAll(cardService.findCardLikeAddress(query));
+        }
+
+
+        model.addAttribute("searchResults", searchResults);
+        if(searchResults.isEmpty()){
+            model.addAttribute("error","没有查询到用户");
+            return "query";
+        }
+        return "query";
+    }
 
 }

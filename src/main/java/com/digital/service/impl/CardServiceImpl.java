@@ -46,5 +46,40 @@ public class CardServiceImpl implements CardService {
         return cardMapper.findCardByUsername(username);
     }
 
+    @Override
+    public List<Card> findCardLikeUsername(String username) {
+        return cardMapper.findCardLikeUsername(username);
+    }
+
+    @Override
+    public List<Card> findCardLikePhone(Long number) {
+        return cardMapper.findCardLikePhone(number);
+    }
+
+    @Override
+    public List<Card> findCardLikeE_mail(String e_mail) {
+        return cardMapper.findCardLikeE_mail(e_mail);
+    }
+
+    @Override
+    public List<Card> findCardLikeWorkplace(String workplace) {
+        return cardMapper.findCardLikeWorkplace(workplace);
+    }
+
+    @Override
+    public List<Card> findCardLikeTitle(String Title) {
+        return cardMapper.findCardLikeTitle(Title);
+    }
+
+    @Override
+    public List<Card> findCardLikeAddress(String address) {
+        return cardMapper.findCardLikeAddress(address);
+    }
+
+    @Override
+    public List<Card> findCardLikeName(String name) {
+        return cardMapper.findCardLikeName(name);
+    }
+
 
 }

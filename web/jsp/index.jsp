@@ -29,9 +29,7 @@
     <button class="button">名片管理</button>
     <div class="dropdown-content">
       <a href="${pageContext.request.contextPath}/card/toAddCard" class="button">添加名片</a>
-      <a href="#" class="button">删除名片</a>
-      <a href="#" class="button">修改名片</a>
-      <a href="#" class="button">查询名片</a>
+      <a href="${pageContext.request.contextPath}/card/toQuery" class="button">查询名片</a>
     </div>
   </div>
   <a href="#" class="button">个人中心</a>
@@ -44,19 +42,23 @@
     <th>卡号</th>
     <th>姓名</th>
     <th>公司</th>
-    <th>详细</th>
+    <th>操作</th>
   </tr>
   </thead>
   <tbody>
   <% for (Card card : (List<Card>) request.getAttribute("cards")) { %>
   <tr>
-    <td><input type="checkbox" name="cardId" value="<%=card.getCard_id()%>"></td>
     <td><%=card.getCard_id()%></td>
     <td><%=card.getName()%></td>
     <td><%=card.getWorkplace()%></td>
-    <td><a href="#">详细</a></td>
+    <td>
+      <a href="#">详细</a>
+      &nbsp; | &nbsp;
+      <a href="${pageContext.request.contextPath}/card/deleteCard?id=<%=card.getCard_id()%>">删除</a>
+    </td>
   </tr>
   <% } %>
+
 
   </tbody>
 </table>
@@ -66,6 +68,5 @@
   <span>第${num}页</span>
   <a href="#" class="page-link">下一页</a>
 </div>
-
 </body>
 </html>
