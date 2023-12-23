@@ -116,4 +116,14 @@ public class CardController {
         return "query";
     }
 
+
+    @RequestMapping("/showDetails")
+    public String showDetails(HttpSession session,Model model,@RequestParam int id){
+        User user = (User) session.getAttribute("user");
+        model.addAttribute("user",user);
+        Card cardDetial=cardService.findCardById(id);
+        model.addAttribute("cardDetail",cardDetial);
+        return "details";
+    }
+
 }

@@ -42,6 +42,7 @@
     <th>卡号</th>
     <th>姓名</th>
     <th>公司</th>
+    <th>联系</th>
     <th>操作</th>
   </tr>
   </thead>
@@ -51,8 +52,9 @@
     <td><%=card.getCard_id()%></td>
     <td><%=card.getName()%></td>
     <td><%=card.getWorkplace()%></td>
+    <td><%=card.getPhone_num()%></td>
     <td>
-      <a href="#">详细</a>
+      <a href="${pageContext.request.contextPath}/card/showDetails?id=<%=card.getCard_id()%>">详细</a>
       &nbsp; | &nbsp;
       <a href="${pageContext.request.contextPath}/card/deleteCard?id=<%=card.getCard_id()%>">删除</a>
     </td>
