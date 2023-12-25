@@ -21,7 +21,7 @@
 
 <body>
 <div class="welcome-container">
-  <h2>欢迎${param.username}${back}来到名片管理系统</h2>
+  <h2>欢迎${param.username}来到名片管理系统</h2>
 </div>
 
 <div class="options-container">
@@ -32,7 +32,7 @@
       <a href="${pageContext.request.contextPath}/card/toQuery" class="button">查询名片</a>
     </div>
   </div>
-  <a href="#" class="button">个人中心</a>
+  <a href="${pageContext.request.contextPath}/card/personShow?username=${param.username}" class="button">个人中心</a>
   <a href="${pageContext.request.contextPath}/jsp/Login.jsp" class="button">安全退出</a>
 </div>
 

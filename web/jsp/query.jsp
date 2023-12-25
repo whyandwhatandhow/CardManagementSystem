@@ -64,7 +64,7 @@
 </div>
 
 <div class="return-btn">
-  <a href="${pageContext.request.contextPath}/card/list">返回</a>
+  <a href="${pageContext.request.contextPath}/card/list?username=${user.username}">返回</a>
 </div>
 
 </body>

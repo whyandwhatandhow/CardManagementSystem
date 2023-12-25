@@ -65,7 +65,7 @@
     <div id="error-message" style="color: red; display: none;"></div>
     <button type="submit" class="login-btn">确认</button>
   </form>
-  <button onclick="location.href='${pageContext.request.contextPath}/card/list'" class="register-btn">返回</button>
+  <button onclick="location.href='${pageContext.request.contextPath}/card/list?username=${user.username}'" class="register-btn">返回</button>
 </div>
 <script>
   var error1 = '${message1}';

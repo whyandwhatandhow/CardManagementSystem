@@ -30,12 +30,12 @@ public class UserController {
         }
         if (loginUser!=null&&loginUser.getPassword().equals(password)) {
             // 登录成功，将用户信息存储到session中
-            session.setAttribute("loggedInUser", user);
+            session.setAttribute("user", loginUser);
 
             // 使用 RedirectAttributes 传递参数到重定向页面
             redirectAttributes.addAttribute("username", username);
             // 重定向到index.jsp页面
-            return "redirect:/card/list";
+            return  "redirect:/card/list";
         } else {
             if(flag!=1) {
                 model.addAttribute("error", "用户名或密码错误");

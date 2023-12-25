@@ -1,5 +1,4 @@
 <%@ page import="com.digital.entity.Card" %>
-<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -8,7 +7,7 @@
 </head>
 <body>
 <div class="details-container">
-    <% if (request.getAttribute("cardDetail") != null) { %>
+    <% if (request.getAttribute("cardPerson") != null) { %>
     <h3>名片详情：</h3>
     <table>
         <thead>
@@ -24,7 +23,7 @@
         </tr>
         </thead>
         <tbody>
-        <% Card result= (Card) request.getAttribute("cardDetail"); %>
+        <% Card result= (Card) request.getAttribute("cardPerson"); %>
         <tr>
             <td><%=result.getCard_id()%></td>
             <td><%=result.getName()%></td>
@@ -37,6 +36,7 @@
         </tr>
         </tbody>
     </table>
+    <a href="${pageContext.request.contextPath}/card/toEnter" class="button">更新</a>
     <a href="${pageContext.request.contextPath}/card/list?username=${user.username}" class="button">返回</a>
     <% } %>
 </div>
