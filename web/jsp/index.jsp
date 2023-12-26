@@ -21,7 +21,7 @@
 
 <body>
 <div class="welcome-container">
-  <h2>欢迎${param.username}来到名片管理系统</h2>
+  <h2>欢迎${user.username}来到名片管理系统</h2>
 </div>
 
 <div class="options-container">

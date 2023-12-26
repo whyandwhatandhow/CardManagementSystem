@@ -63,6 +63,20 @@
     </bean>
 
 
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/card/**"/>
+            <mvc:exclude-mapping path="/user/login"/>
+            <bean class="com.digital.interceptor.loginInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 
 
+
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+
+    <tx:annotation-driven transaction-manager="transactionManager"/>
 </beans>

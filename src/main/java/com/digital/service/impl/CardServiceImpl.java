@@ -5,6 +5,7 @@ import com.digital.entity.Card;
 import com.digital.service.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -15,6 +16,8 @@ public class CardServiceImpl implements CardService {
     public void setCardMapper(CardMapper cardMapper) {
         this.cardMapper = cardMapper;
     }
+
+    @Transactional
     @Override
     public void addCard(Card card) {
         cardMapper.addCard(card);
@@ -36,6 +39,8 @@ public class CardServiceImpl implements CardService {
         return cardMapper.findCardById(id);
     }
 
+
+    @Transactional
     @Override
     public void UpdateCard(Card card) {
         cardMapper.UpdateCard(card);

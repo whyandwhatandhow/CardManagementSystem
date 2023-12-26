@@ -5,6 +5,7 @@ import com.digital.entity.User;
 import com.digital.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.transaction.annotation.Transactional;
 
 public class UserServiceImpl implements UserService {
     @Autowired
@@ -13,6 +14,8 @@ public class UserServiceImpl implements UserService {
     public void setUserMapper(UserMapper userMapper) {
         this.userMapper = userMapper;
     }
+
+    @Transactional
     @Override
     public void addUser(User user) {
         userMapper.addUser(user);
@@ -23,6 +26,7 @@ public class UserServiceImpl implements UserService {
         return userMapper.selectUserByUsername(username);
     }
 
+    @Transactional
     @Override
     public void updateUser(User user) {
         userMapper.updateUser(user);

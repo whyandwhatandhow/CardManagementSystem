@@ -30,8 +30,8 @@ public class CardController {
 
     //展示主页面
     @RequestMapping("/list")
-    public String list(@RequestParam(value = "username") String user, Model model, HttpSession session) {
-        session.getAttribute("user");
+    public String list(Model model, HttpSession session) {
+        User user = (User) session.getAttribute("user");
         model.addAttribute("user", user);
         List<Card> cards = cardService.list();
         model.addAttribute("cards", cards);

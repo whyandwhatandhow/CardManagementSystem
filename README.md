@@ -87,3 +87,39 @@ public String list(@RequestParam(value = "username", defaultValue = "defaultUser
 ```
 
 
+拦截器：
+先注册拦截器：
+```
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/card/**"/>
+            <mvc:exclude-mapping path="/user/login"/>
+            <bean class="com.digital.interceptor.loginInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+```
+
+实现拦截器：继承HandlerInterceptor接口
+```
+public class loginInterceptor implements HandlerInterceptor {
+
+    @Override
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        // 获取Session
+        HttpSession session = request.getSession();
+        // 检查Session中是否存在user属性
+        Object user = session.getAttribute("user");
+
+        if (user == null) {
+            // 用户未登录，重定向到登录页面
+            response.sendRedirect("/user/login");
+            return false; // 请求被拦截
+        }
+        // 用户已登录，允许请求继续执行
+        return true;
+    }
+}
+```
+
+

@@ -32,8 +32,6 @@ public class UserController {
             // 登录成功，将用户信息存储到session中
             session.setAttribute("user", loginUser);
 
-            // 使用 RedirectAttributes 传递参数到重定向页面
-            redirectAttributes.addAttribute("username", username);
             // 重定向到index.jsp页面
             return  "redirect:/card/list";
         } else {
