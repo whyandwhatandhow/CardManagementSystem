@@ -58,7 +58,7 @@ public class UserController {
                 userService.addUser(newUser);
                 flag=1;
                 session.setAttribute("registerUser",user);
-                return "redirect:/user/login ";
+                    return "redirect:/user/login ";
             }else {
                 model.addAttribute("message2","前后密码不一致");
                 return "register";
