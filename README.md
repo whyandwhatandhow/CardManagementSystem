@@ -1,6 +1,7 @@
 # CardManagementSystem
-J2EE大作业，名片管理系统
-
+J2EE项目，名片管理系统
+启动后
+http://localhost:8080/jsp/Login.jsp
 错误1：
 controller找不到跳转页面：没有申请servlet，在web种声明servlet就好了
 
